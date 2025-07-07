@@ -4,8 +4,13 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const createError = require('http-errors');
 
+
+const mongoUri = process.env.MONGODB_MUSIC;
+console.error('ERROR: La variable MONGODB_MUSIC no esta definida.');
+process.exit(1);
+
 // Conexión a MongoDB
-mongoose.connect('mongodb+srv://gerardoaati22:D0n0hMDPFUNkptPz@cluster0.fj5zru8.mongodb.net/canciones01?retryWrites=true&w=majority&appName=Cluster0')
+mongoose.connect(mongoUri)
   .then((x) => {
     console.log(`Conectado exitosamente a la BD: "${x.connections[0].name}"`)
   })
