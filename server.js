@@ -6,8 +6,10 @@ const createError = require('http-errors');
 
 
 const mongoUri = process.env.MONGODB_MUSIC;
+if(!mongoUri){
 console.error('ERROR: La variable MONGODB_MUSIC no esta definida.');
 process.exit(1);
+}
 
 // Conexión a MongoDB
 mongoose.connect(mongoUri)
